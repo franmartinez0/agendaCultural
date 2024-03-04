@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('evento_id')->nullable();
             $table->foreign('evento_id')
                 ->references('id')
-                ->on('events')
+                ->on('eventos')
                 ->onUpdate('cascade')
                 ->onDelete('set null');
             $table->unsignedBigInteger('user_id')->nullable();
