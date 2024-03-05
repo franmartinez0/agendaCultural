@@ -20,7 +20,7 @@ class InscripcionFactory extends Factory
             'numero_entradas' => fake()->numberBetween(1, 10),
             'estado' => fake()->randomElement(['recibida', 'confirmada', 'cancelada']),
             'user_id' => fake()->numberBetween(1, 10),
-            'evento_id' => fake()->unique()->numberBetween(1, 100),
+            'evento_id' => fake()->unique()->numberBetween(1, 50),
         ];
     }
 }

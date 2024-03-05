@@ -25,7 +25,7 @@ class ExperienciaFactory extends Factory
             'precio' => fake()->randomFloat(2, 0, 50),
             'link' => fake()->url(),
             'imagen' => fake()->randomElement(['ex1.jpg', 'ex2.jpg', 'ex3.jpg', 'ex4.jpg', 'ex5.jpg']),
-            'categoria_id' => fake()->numberBetween(1, 10),
+            'categoria_id' => fake()->numberBetween(1, 7),
             'empresa_id' => fake()->numberBetween(1, 10),
         ];
     }

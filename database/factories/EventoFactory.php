@@ -28,7 +28,7 @@ class EventoFactory extends Factory
             'tipo' => fake()->randomElement(['presencial', 'online']),
             'entrada_persona' => fake()->numberBetween(0, 40),
             'imagen' => fake()->randomElement(['ev1.jpg', 'ev2.jpg', 'ev3.jpg', 'ev4.jpg', 'ev5.jpg']),
-            'categoria_id' => fake()->numberBetween(1, 10),
+            'categoria_id' => fake()->numberBetween(1, 7),
             'user_id' => fake()->numberBetween(1, 10)
         ];
     }

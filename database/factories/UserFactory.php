@@ -25,7 +25,7 @@ class UserFactory extends Factory
     {
         return [
             'rol' => fake()->randomElement(['asistente', 'creadorEventos']),
-            'dni' => $this->faker->dni,
+            'dni' => fake()->numberBetween(11111111, 99999999) . fake()->randomLetter(),
             'nombre' => fake()->name(),
             'apellidos' => fake()->lastName(),
             'edad' => fake()->numberBetween(15, 80),

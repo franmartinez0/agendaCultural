@@ -16,17 +16,9 @@ return new class extends Migration
             $table->integer('numero_entradas');
             $table->string('estado');
             $table->unsignedBigInteger('evento_id')->nullable();
-            $table->foreign('evento_id')
-                ->references('id')
-                ->on('eventos')
-                ->onUpdate('cascade')
-                ->onDelete('set null');
+            $table->foreign('evento_id')->references('id')->on('eventos')->onUpdate('cascade')->onDelete('set null');
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->foreign('user_id')
-                ->references('id')
-                ->on('users')
-                ->onUpdate('cascade')
-                ->onDelete('set null');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('set null');
             $table->timestamps();
         });
     }
