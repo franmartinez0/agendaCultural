@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EventoController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('/', [EventoController::class, 'indexWelcome'])->name('home');
 
 
 /* aqui voy a meter todas las rutas */

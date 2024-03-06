@@ -2,11 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categoria;
 use App\Models\Evento;
 use Illuminate\Http\Request;
 
 class EventoController extends Controller
 {
+    /**
+     * muestran los eventos de la pagina de bienvenida.
+     */
+    public function indexWelcome()
+    {
+
+        $eventos = Evento::where('categoria_id', '!=', null)
+            ->where('estado', 'creado')
+            ->where('fecha', '>=', now())
+            ->orderBy('fecha', 'asc')
+            ->paginate(4);
+        $categorias = Categoria::all();
+        return view('welcome', ['eventos' => $eventos]);
+    }
     /**
      * Display a listing of the resource.
      */
@@ -14,6 +29,7 @@ class EventoController extends Controller
     {
         //
     }
+
 
     /**
      * Show the form for creating a new resource.

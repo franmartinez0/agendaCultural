@@ -27,7 +27,7 @@
 
             <nav class="flex-wrap lg:flex items-center justify-between mb-20 lg:mb-40" x-data="{ navbarOpen: false }">
                 <div class="flex items-center justify-between mb-10 lg:mb-0">
-                    <img src="assets/image/navbar-logo.svg" alt="Logo">
+                    <img src="{{ asset('storage/logo.png') }}" alt="Logo" style="width: 100px; height: auto;">
 
                     <button
                         class="flex items-center justify-center border border-green-500 w-10 h-10 text-green-500 rounded-md outline-none lg:hidden ml-auto"
@@ -36,29 +36,50 @@
                     </button>
                 </div>
 
+
+
                 <ul class="hidden lg:block lg:flex flex-col lg:flex-row lg:items-center lg:space-x-20"
                     :class="{ 'hidden': !navbarOpen, 'flex': navbarOpen }">
                     <li
                         class="font-medium text-green-500 text-lg hover:text-green-300 transition ease-in-out duration-300 mb-5 lg:mb-0">
-                        <a href="#">Services</a>
+                        <a href="{{ url('/dashboard') }}">Agenda</a>
                     </li>
 
                     <li
                         class="font-medium text-green-500 text-lg hover:text-green-300 transition ease-in-out duration-300 mb-5 lg:mb-0">
-                        <a href="#">Works</a>
+                        <a href="#">Explora</a>
                     </li>
 
                     <li
                         class="font-medium text-green-500 text-lg hover:text-green-300 transition ease-in-out duration-300 mb-5 lg:mb-0">
-                        <a href="#">Blog</a>
+                        <a href="#">Experiencias</a>
                     </li>
-
-                    <li
-                        class="px-8 py-3 font-medium text-green-500 text-lg text-center border-2 border-green-500 rounded-md hover:bg-green-500 hover:text-white transition ease-linear duration-300">
-                        <a href="#">Connect</a>
-                    </li>
-                </ul>
+                    @if (Route::has('login'))
+                        @auth
+                            <li
+                                class="px-8 py-3 font-medium text-green-500 text-lg text-center border-2 border-green-500 rounded-md hover:bg-green-500 hover:text-white transition ease-linear duration-300">
+                                <a href="{{ url('/dashboard') }}">Dashboard</a>
+                            </li>
+                        @else
+                            <li
+                                class="px-8 py-3 font-medium text-green-500 text-lg text-center border-2 border-green-500 rounded-md hover:bg-green-500 hover:text-white transition ease-linear duration-300">
+                                <a href="{{ route('login') }}">login</a>
+                            </li>
+                            @if (Route::has('register'))
+                                <li
+                                    class="px-8 py-3 font-medium text-green-500 text-lg text-center border-2 border-green-500 rounded-md hover:bg-green-500 hover:text-white transition ease-linear duration-300">
+                                    <a href="{{ route('register') }}">Register</a>
+                                </li>
+                    </ul>
+                    @endif
+                @endauth
             </nav>
-            @slot('')
-            @endslot
+            @endif
+
+
         </div>
+        <div>
+            {{ $slot }}
+        </div>
+    </section>
+</body>
